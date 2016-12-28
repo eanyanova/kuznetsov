@@ -1,0 +1,5 @@
+.idea
+/components/*
+/static
+*.sqlite3
+.git

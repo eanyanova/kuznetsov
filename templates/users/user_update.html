@@ -1,0 +1,5 @@
+{% extends './user_form.html' %}
+{% block title %}Изменить пользователя{% endblock %}
+{% block page_header %}Изменить пользователя{% endblock %}
+{% block submit_name %}Изменить{% endblock %}
+{% block form_action %}{% url 'users:update' pk=form.instance.pk %}{% endblock %}

@@ -1,0 +1,5 @@
+{% extends './user_form.html' %}
+{% block title %}Создать пользователя{% endblock %}
+{% block page_header %}Создать пользователя{% endblock %}
+{% block submit_name %}Создать{% endblock %}
+{% block form_action %}{% url 'users:create' %}{% endblock %}

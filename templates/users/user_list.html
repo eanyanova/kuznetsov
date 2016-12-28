@@ -1,0 +1,42 @@
+{% extends '../base.html' %}
+{% block title %}Список пользователей{% endblock %}
+{% block page_header %}Список пользователей{% endblock %}
+{% block body %}
+    <div class="panel-body">
+        <a href="{% url 'users:create' %}" class="btn btn-primary">Создать</a>
+    </div>
+    <div class="panel-body">
+        {% if user_list %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td class="thin-as-possible">ID</td>
+                        <td style="width:33%">Фамилия</td>
+                        <td style="width:33%">Имя</td>
+                        <td style="width:33%">Телефон</td>
+                        <td class="thin-as-possible">Создано</td>
+                        <td class="thin-as-possible">Изменено</td>
+                        <td class="thin-as-possible"></td>
+                        <td class="thin-as-possible"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user_list %}
+                        <tr>
+                            <td>{{ user.pk }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.phone }}</td>
+                            <td class="text-nowrap">{{ user.created_at|date:'d.m.Y H:i:s' }}</td>
+                            <td class="text-nowrap">{% if user.changed_at != user.created_at %}{{ user.changed_at|date:'d.m.Y H:i:s' }}{% endif %}</td>
+                            <td><a href="{% url 'users:update' pk=user.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td><a href="{% url 'users:delete' pk=user.pk %}" class="js-confirm" data-confirm="Вы уверены, что хотите удалить пользователя?"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">Пользователи не найдены</div>
+        {% endif %}
+    </div>
+{% endblock %}
