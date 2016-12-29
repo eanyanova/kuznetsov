@@ -30,7 +30,7 @@
                             <td class="text-nowrap">{{ user.created_at|date:'d.m.Y H:i:s' }}</td>
                             <td class="text-nowrap">{% if user.changed_at != user.created_at %}{{ user.changed_at|date:'d.m.Y H:i:s' }}{% endif %}</td>
                             <td><a href="{% url 'users:update' pk=user.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a href="{% url 'users:delete' pk=user.pk %}" class="js-confirm" data-confirm="Вы уверены, что хотите удалить пользователя?"><span class="glyphicon glyphicon-remove"></span></a></td>
+                            <td><a href="{% url 'users:delete' pk=user.pk %}" data-confirm-action="Вы уверены, что хотите удалить пользователя?"><span class="glyphicon glyphicon-remove"></span></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
