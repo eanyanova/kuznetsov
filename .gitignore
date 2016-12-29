@@ -3,3 +3,4 @@
 /static
 *.sqlite3
 .git
+*.pyc
